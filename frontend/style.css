@@ -1,0 +1,81 @@
+/* style.css */
+body {
+    background-color: #121212;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.lead {
+    color: #cccccc;
+}
+
+.container {
+    max-width: 600px;
+    margin-top: 5%;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    background-color: #222;
+}
+
+.form-control-lg {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+button {
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+.alert {
+    font-size: 1.5rem;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    border: 1px solid #444;
+}
+
+.list-group-item {
+    background-color: #1c1c1c;
+    color: #cccccc;
+    font-size: 1.2rem;
+    border-color: #444;
+}
+
+.btn-outline-light {
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #121212;
+}
+/* Dark Theme */
+body {
+    background-color: #121212;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+}
+
+h1, .card-title {
+    color: #ffffff;
+}
+
+p, .lead, .list-group-item, .card-text, .footer p {
+    color: #cccccc;
+}
