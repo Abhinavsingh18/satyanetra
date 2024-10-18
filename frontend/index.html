@@ -1,193 +1,197 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SatyaNetra - AI Powered Deepfake Detection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #1b1b1b;
-            color: #ffffff;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 40px;
-            background-color: #111111;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: 600;
-        }
-        .logo span {
-            color: #ff4c60;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 20px;
-        }
-        nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 400;
-        }
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-            background-color: #1b1b1b;
-        }
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-        .upload-area {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .file-input {
-            padding: 10px;
-            background-color: #2b2b2b;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            cursor: pointer;
-        }
-        .btn {
-            padding: 15px 30px;
-            background-color: #ff4c60;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        .btn:hover {
-            background-color: #ff3145;
-        }
-        .progress-bar {
-            width: 300px;
-            height: 10px;
-            background-color: #555;
-            border-radius: 5px;
-            margin-top: 10px;
-            display: none;
-        }
-        .progress {
-            height: 100%;
-            background-color: #ff4c60;
-            width: 0%;
-            border-radius: 5px;
-        }
-        .result-area {
-            padding: 40px;
-            text-align: center;
-            display: none;
-            background-color: #111111;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-        .result-area h2 {
-            margin-bottom: 20px;
-            font-size: 28px;
-        }
-        .result-area p {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        footer {
-            background-color: #111111;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-        }
-    </style>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>SatyaNetra - AI Powered Deepfake Detection</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Poppins', sans-serif;
+                background-color: #1b1b1b;
+                color: #ffffff;
+            }
+            header {
+                display: flex;
+                justify-content: space-between;
+                padding: 20px 40px;
+                background-color: #111111;
+            }
+            .logo {
+                font-size: 24px;
+                font-weight: 600;
+            }
+            .logo span {
+                color: #ff4c60;
+            }
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+            nav ul li {
+                margin-left: 20px;
+            }
+            nav ul li a {
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: 400;
+            }
+            .hero {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                text-align: center;
+                background-color: #1b1b1b;
+            }
+            .hero h1 {
+                font-size: 48px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            .hero p {
+                font-size: 18px;
+                margin-bottom: 40px;
+            }
+            .upload-area {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .file-input {
+                padding: 10px;
+                background-color: #2b2b2b;
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                cursor: pointer;
+            }
+            .btn {
+                padding: 15px 30px;
+                background-color: #ff4c60;
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 18px;
+            }
+            .btn:hover {
+                background-color: #ff3145;
+            }
+            .progress-bar {
+                width: 300px;
+                height: 10px;
+                background-color: #555;
+                border-radius: 5px;
+                margin-top: 10px;
+                display: none;
+            }
+            .progress {
+                height: 100%;
+                background-color: #ff4c60;
+                width: 0%;
+                border-radius: 5px;
+            }
+            .result-area {
+                padding: 40px;
+                text-align: center;
+                display: none;
+                background-color: #111111;
+                margin-top: 20px;
+                border-radius: 10px;
+            }
+            .result-area h2 {
+                margin-bottom: 20px;
+                font-size: 28px;
+            }
+            .result-area p {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            footer {
+                background-color: #111111;
+                text-align: center;
+                padding: 20px;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
 
-    <header>
-        <div class="logo">Satya<span>Netra</span></div>
-        
-    </header>
+        <header>
+            <div class="logo">Satya<span>Netra</span></div>
+            <nav>
+                <ul>
+                    <li><a href="/frontend/impactofdeepfakes.html">Impact of Deepfakes</a></li>
+                    <li><a href="/frontend/recentcases.html">Recent Cases</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <section class="hero">
-        <h1>AI-Powered Deepfake Detection</h1>
-        <p>SatyaNetra, your trustworthy assistant for identifying deepfake videos. Analyze and report suspicious content with cutting-edge AI.</p>
-        
-        <div class="upload-area">
-            <label for="videoUpload" class="file-input">Choose Video File</label>
-            <input type="file" id="videoUpload" accept="video/*" style="display: none;">
-            <button class="btn" id="uploadButton" onclick="uploadVideo()">Upload and Analyze</button>
-            <div class="progress-bar" id="progressBar">
-                <div class="progress" id="progress"></div>
+        <section class="hero">
+            <h1>AI-Powered Deepfake Detection</h1>
+            <p>SatyaNetra, your trustworthy assistant for identifying deepfake videos. Analyze and report suspicious content with cutting-edge AI.</p>
+            
+            <div class="upload-area">
+                <label for="videoUpload" class="file-input">Choose Video File</label>
+                <input type="file" id="videoUpload" accept="video/*" style="display: none;">
+                <button class="btn" id="uploadButton" onclick="uploadVideo()">Upload and Analyze</button>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress" id="progress"></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="result" class="result-area">
-        <h2>Deepfake Analysis Result</h2>
-        <p id="resultMessage">No result yet.</p>
-        <p id="confidenceLevel"></p>
-    </section>
+        <section id="result" class="result-area">
+            <h2>Deepfake Analysis Result</h2>
+            <p id="resultMessage">No result yet.</p>
+            <p id="confidenceLevel"></p>
+        </section>
 
-    <footer>
-        <p>&copy; 2024 SatyaNetra. All rights reserved.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2024 SatyaNetra. All rights reserved.</p>
+        </footer>
 
-    <script>
-        const progressBar = document.getElementById('progressBar');
-        const progress = document.getElementById('progress');
-        const resultArea = document.getElementById('result');
-        const resultMessage = document.getElementById('resultMessage');
-        const confidenceLevel = document.getElementById('confidenceLevel');
+        <script>
+            const progressBar = document.getElementById('progressBar');
+            const progress = document.getElementById('progress');
+            const resultArea = document.getElementById('result');
+            const resultMessage = document.getElementById('resultMessage');
+            const confidenceLevel = document.getElementById('confidenceLevel');
 
-        document.getElementById('videoUpload').addEventListener('change', function() {
-            document.querySelector('.file-input').textContent = this.files[0].name;
-        });
+            document.getElementById('videoUpload').addEventListener('change', function() {
+                document.querySelector('.file-input').textContent = this.files[0].name;
+            });
 
-        function uploadVideo() {
-            // Simulate video uploading and analyzing process
-            progressBar.style.display = 'block';
-            let progressValue = 0;
-            const interval = setInterval(() => {
-                if (progressValue < 100) {
-                    progressValue += 10;
-                    progress.style.width = progressValue + '%';
-                } else {
-                    clearInterval(interval);
-                    showResult();
-                }
-            }, 300);
-        }
+            function uploadVideo() {
+                // Simulate video uploading and analyzing process
+                progressBar.style.display = 'block';
+                let progressValue = 0;
+                const interval = setInterval(() => {
+                    if (progressValue < 100) {
+                        progressValue += 10;
+                        progress.style.width = progressValue + '%';
+                    } else {
+                        clearInterval(interval);
+                        showResult();
+                    }
+                }, 300);
+            }
 
-        function showResult() {
-            // Simulate analysis result
-            resultArea.style.display = 'block';
-            resultMessage.textContent = 'Deepfake Detected';
-            confidenceLevel.textContent = 'Confidence Level: 87%';
-        }
-    </script>
+            function showResult() {
+                // Simulate analysis result
+                resultArea.style.display = 'block';
+                resultMessage.textContent = 'Deepfake Detected';
+                confidenceLevel.textContent = 'Confidence Level: 87%';
+            }
+        </script>
 
-</body>
-</html>
+    </body>
+    </html>
