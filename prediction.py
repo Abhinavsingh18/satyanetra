@@ -2,18 +2,17 @@
 import numpy as np
 import cv2
 import tensorflow as tf
-from tensorflow.keras.applications import ResNet50
-from tensorflow.keras.applications.resnet50 import preprocess_input
+from tensorflow.keras.applications import EfficientNetB0
+from tensorflow.keras.applications.efficientnet import preprocess_input
 from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 import os
 
-# Load the pre-trained ResNet50 model (up to the last pooling layer)
-base_model = ResNet50(weights='imagenet', include_top=False, pooling='avg')
-resnet_model = Model(inputs=base_model.input, outputs=base_model.output)
+# Load EfficientNetB0 model
+base_model = EfficientNetB0(weights='imagenet', include_top=False, pooling='avg')
+efficientnet_model = Model(inputs=base_model.input, outputs=base_model.output)
 
-# Function to preprocess video and extract features from frames
 def extract_features_from_video(video_path, model, frame_size=(224, 224), frame_step=5):
     cap = cv2.VideoCapture(video_path)
     features_list = []
@@ -26,10 +25,10 @@ def extract_features_from_video(video_path, model, frame_size=(224, 224), frame_
     success, frame = cap.read()
 
     while success:
-        if frame_count % frame_step == 0:  # Process every 'frame_step' frames
+        if frame_count % frame_step == 0:
             resized_frame = cv2.resize(frame, frame_size)
             img_array = np.expand_dims(resized_frame, axis=0)
-            img_array = preprocess_input(img_array)  # ResNet50 specific preprocessing
+            img_array = preprocess_input(img_array) 
             
             features = model.predict(img_array)
             features_list.append(features[0])
@@ -45,7 +44,6 @@ def extract_features_from_video(video_path, model, frame_size=(224, 224), frame_
     
     return np.array(features_list)
 
-# Function to create LSTM model
 def create_lstm_model(input_shape, hidden_units=512, num_classes=2):
     model = Sequential()
     model.add(LSTM(hidden_units, input_shape=input_shape, return_sequences=False))
@@ -54,9 +52,8 @@ def create_lstm_model(input_shape, hidden_units=512, num_classes=2):
     model.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
     return model
 
-# Function to run the prediction
 def detect_deepfake(video_path):
-    extracted_features = extract_features_from_video(video_path, resnet_model)
+    extracted_features = extract_features_from_video(video_path, efficientnet_model)
     
     if extracted_features is None:
         return {'error': 'Feature extraction failed'}
