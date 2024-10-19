@@ -7,11 +7,10 @@ from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 
-# Load the pre-trained ResNet50 model
+
 base_model = ResNet50(weights='imagenet', include_top=False, pooling='avg')
 feature_extraction_model = Model(inputs=base_model.input, outputs=base_model.output)
 
-# Function to extract features from video frames
 def extract_features_from_video(video_path, model, frame_size=(224, 224), frame_step=5):
     cap = cv2.VideoCapture(video_path)
     features_list = []
@@ -35,7 +34,7 @@ def extract_features_from_video(video_path, model, frame_size=(224, 224), frame_
         return None
     return np.array(features_list)
 
-# Function to create LSTM model
+
 def create_lstm_model(input_shape):
     model = Sequential()
     model.add(LSTM(512, input_shape=input_shape, return_sequences=False))

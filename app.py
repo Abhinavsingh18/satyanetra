@@ -52,13 +52,6 @@ def upload_video():
                                confidence_real=analysis_result['confidence_real'],
                                confidence_deepfake=analysis_result['confidence_deepfake'])
 
-# @app.route('/impactofdeepfakes')
-# def impact_of_deepfakes():
-#     return render_template('impactofdeepfakes.html')
-
-# @app.route('/recentcases')
-# def recent_cases():
-#     return render_template('recentcases.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
