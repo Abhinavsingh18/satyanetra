@@ -1,0 +1,170 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1b1b1b;
+    color: #ffffff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: #111111;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.logo span {
+    color: #ff4c60;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #1b1b1b;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.file-input {
+    padding: 10px 20px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: 2px solid #ff4c60;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.file-input:hover {
+    background-color: #ff4c60;
+    border-color: #ff4c60;
+}
+
+.file-input:active {
+    background-color: #ff3145;
+    border-color: #ff3145;
+}
+
+#videoUpload {
+    display: none;
+}
+
+.btn {
+    padding: 15px 30px;
+    background-color: #ff4c60;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff3145;
+}
+
+.btn:active {
+    background-color: #ff192a;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 10px;
+    background-color: #555;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: none;
+}
+
+.progress {
+    height: 100%;
+    background-color: #ff4c60;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+.result-area {
+    padding: 40px;
+    text-align: center;
+    display: none;
+    background-color: #111111;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.result-area h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #ff4c60;
+}
+
+.result-area p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+footer {
+    background-color: #111111;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Custom Styles for Inputs and Button Hover */
+input[type="file"]:focus, 
+button:focus {
+    outline: none;
+    border-color: #ff3145;
+    box-shadow: 0 0 5px #ff4c60;
+}

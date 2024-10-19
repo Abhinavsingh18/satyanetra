@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #1b1b1b;
+            color: #ffffff;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background-color: #111111;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .logo span {
+            color: #ff4c60;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+        }
+        footer {
+            background-color: #111111;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+        .result-area {
+            padding: 40px;
+            text-align: center;
+            background-color: #111111;
+            margin: 40px auto;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+        .result-area h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        .result-area p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #ff4c60;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Satya<span>Netra</span></div>
+        <nav>
+            <ul>
+                <li><a href="/">Detect</a></li>
+                <li><a href="/impactofdeepfakes">Impact of Deepfakes</a></li>
+                <li><a href="/recentcases">Recent Cases</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="result-area">
+        <h2>Deepfake Analysis Result</h2>
+        <p><strong>Result:</strong> <strong style="color:rgb(245, 72, 72)">{{ result }}</strong></p>
+        <p><strong>Confidence (Real):</strong> {{ confidence_real | round(4) }}</p>
+        <p><strong>Confidence (Deepfake):</strong> {{ confidence_deepfake | round(4) }}</p>
+        <a href="/">Upload another video</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SatyaNetra. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
