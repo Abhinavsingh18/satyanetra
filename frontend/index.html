@@ -134,7 +134,7 @@
                 </ul>
             </nav>
         </header>
-
+    
         <section class="hero">
             <h1>AI-Powered Deepfake Detection</h1>
             <p>SatyaNetra, your trustworthy assistant for identifying deepfake videos. Analyze and report suspicious content with cutting-edge AI.</p>
@@ -148,50 +148,79 @@
                 </div>
             </div>
         </section>
-
+    
         <section id="result" class="result-area">
             <h2>Deepfake Analysis Result</h2>
             <p id="resultMessage">No result yet.</p>
             <p id="confidenceLevel"></p>
         </section>
-
+    
         <footer>
             <p>&copy; 2024 SatyaNetra. All rights reserved.</p>
         </footer>
-
+    
         <script>
             const progressBar = document.getElementById('progressBar');
             const progress = document.getElementById('progress');
             const resultArea = document.getElementById('result');
             const resultMessage = document.getElementById('resultMessage');
             const confidenceLevel = document.getElementById('confidenceLevel');
-
+            let selectedFile;
+    
             document.getElementById('videoUpload').addEventListener('change', function() {
-                document.querySelector('.file-input').textContent = this.files[0].name;
+                selectedFile = this.files[0];
+                document.querySelector('.file-input').textContent = selectedFile.name;
             });
+    
+            async function uploadVideo() {
+    if (!selectedFile) {
+        alert('Please select a video file first.');
+        return;
+    }
 
-            function uploadVideo() {
-                // Simulate video uploading and analyzing process
-                progressBar.style.display = 'block';
-                let progressValue = 0;
-                const interval = setInterval(() => {
-                    if (progressValue < 100) {
-                        progressValue += 10;
-                        progress.style.width = progressValue + '%';
-                    } else {
-                        clearInterval(interval);
-                        showResult();
-                    }
-                }, 300);
-            }
+    // Show progress bar
+    progressBar.style.display = 'block';
+    let progressValue = 0;
+    const interval = setInterval(() => {
+        if (progressValue < 100) {
+            progressValue += 10;
+            progress.style.width = progressValue + '%';
+        } else {
+            clearInterval(interval);
+        }
+    }, 300);
 
-            function showResult() {
-                // Simulate analysis result
-                resultArea.style.display = 'block';
-                resultMessage.textContent = 'Deepfake Detected';
-                confidenceLevel.textContent = 'Confidence Level: 87%';
-            }
-        </script>
+    // Create FormData to send the file
+    const formData = new FormData();
+    formData.append('file', selectedFile);
 
+    try {
+        const response = await fetch('http://127.0.0.1:5000/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        clearInterval(interval);
+        progress.style.width = '100%'; // Complete progress
+
+        // Check if the response contains an error
+        if (result.error) {
+            resultMessage.textContent = `Error: ${result.error}`;
+            confidenceLevel.textContent = '';
+            return;
+        }
+
+        // Display the result
+        resultArea.style.display = 'block';
+        resultMessage.textContent = result.verdict;
+        confidenceLevel.textContent = `Confidence Level: Real: ${result.real ? result.real.toFixed(2) : 'N/A'}, Deepfake: ${result.deepfake ? result.deepfake.toFixed(2) : 'N/A'}`;
+    } catch (error) {
+        console.error('Error uploading video:', error);
+        resultMessage.textContent = 'Error uploading video.';
+    }
+}
+            </script>
+    
     </body>
     </html>
