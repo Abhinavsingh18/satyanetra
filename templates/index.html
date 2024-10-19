@@ -14,33 +14,40 @@
             background-color: #1b1b1b;
             color: #ffffff;
         }
+
         header {
             display: flex;
             justify-content: space-between;
             padding: 20px 40px;
             background-color: #111111;
         }
+
         .logo {
             font-size: 24px;
             font-weight: 600;
         }
+
         .logo span {
             color: #ff4c60;
         }
+
         nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             display: flex;
         }
+
         nav ul li {
             margin-left: 20px;
         }
+
         nav ul li a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 400;
         }
+
         .hero {
             display: flex;
             flex-direction: column;
@@ -50,20 +57,24 @@
             text-align: center;
             background-color: #1b1b1b;
         }
+
         .hero h1 {
             font-size: 48px;
             font-weight: 600;
             margin-bottom: 20px;
         }
+
         .hero p {
             font-size: 18px;
             margin-bottom: 40px;
         }
+
         .upload-area {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .file-input {
             padding: 10px;
             background-color: #2b2b2b;
@@ -73,6 +84,7 @@
             margin-bottom: 20px;
             cursor: pointer;
         }
+
         .btn {
             padding: 15px 30px;
             background-color: #ff4c60;
@@ -82,9 +94,28 @@
             cursor: pointer;
             font-size: 18px;
         }
+
         .btn:hover {
             background-color: #ff3145;
         }
+
+        /* Loader styles */
+        .loader {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #ff4c60; /* Red */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin-top: 20px;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .progress-bar {
             width: 300px;
             height: 10px;
@@ -93,12 +124,14 @@
             margin-top: 10px;
             display: none;
         }
+
         .progress {
             height: 100%;
             background-color: #ff4c60;
             width: 0%;
             border-radius: 5px;
         }
+
         .result-area {
             padding: 40px;
             text-align: center;
@@ -107,14 +140,17 @@
             margin-top: 20px;
             border-radius: 10px;
         }
+
         .result-area h2 {
             margin-bottom: 20px;
             font-size: 28px;
         }
+
         .result-area p {
             font-size: 18px;
             margin-bottom: 10px;
         }
+
         footer {
             background-color: #111111;
             text-align: center;
@@ -142,26 +178,34 @@
         
         <!-- Upload Form -->
         <div class="upload-area">
-            <form method="POST" action="/upload" enctype="multipart/form-data">
+            <form id="uploadForm" method="POST" action="/upload" enctype="multipart/form-data">
                 <label for="videoUpload" class="file-input">Choose Video File</label>
                 <input type="file" id="videoUpload" name="video" accept="video/*" style="display: none;" required>
                 <button type="submit" class="btn">Upload and Analyze</button>
             </form>
+
+            <!-- Loader -->
+            <div class="loader" id="loader"></div>
+
             <div class="progress-bar" id="progressBar">
                 <div class="progress" id="progress"></div>
             </div>
         </div>
     </section>
 
-    <section id="result" class="result-area">
-        <h2>Deepfake Analysis Result</h2>
-        <p id="resultMessage">No result yet.</p>
-        <p id="confidenceLevel"></p>
-    </section>
-
     <footer>
         <p>&copy; 2024 SatyaNetra. All rights reserved.</p>
     </footer>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        const loader = document.getElementById('loader');
+
+        form.addEventListener('submit', function () {
+            // Show loader when the form is submitted
+            loader.style.display = 'block';
+        });
+    </script>
 
 </body>
 </html>
